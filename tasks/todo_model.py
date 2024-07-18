@@ -9,6 +9,3 @@ class Todo(models.Model):
     def __str__(self):
         return self.title
     
-class User(models.Model):
-    uid = models.CharField(max_length=69)
-    bio = models.CharField(max_length=69)
