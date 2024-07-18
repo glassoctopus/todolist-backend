@@ -1,33 +1,25 @@
-"""todolist URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from tasks.views.auth import register_user, check_user
 from rest_framework import routers
 from tasks.views.users import UserView
-from tasks.views.todo import TodoView
+from tasks.todo_view import TodoView
+from tasks.views.characters import CharacterView
+from tasks.views.skills import SkillView
+from tasks.views.archetypes import ArchetypeView
+from tasks.views.equipments import EquipmentView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserView, 'user')
 router.register(r'todos', TodoView, 'todo')
+router.register(r'heros', CharacterView, 'hero')
+router.register(r'skills', SkillView, 'skill')
+router.register(r'archetypes', ArchetypeView, 'archetype')
+router.register(r'equipments', EquipmentView, 'equipment')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('checkuser', check_user, name='checkuser'),
     path('register', register_user),
-    path('checkuser', check_user),
-    path('', include(router.urls)),  # Include the router URLs here
+    path('', include(router.urls)),
 ]

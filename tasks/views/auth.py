@@ -1,4 +1,4 @@
-from tasks.models import User
+from tasks.models.user import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 

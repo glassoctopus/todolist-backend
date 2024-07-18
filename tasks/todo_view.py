@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from tasks.models import Todo
+from .todo_model import Todo
 
 class TodoSerializer(serializers.ModelSerializer):
     class Meta:
